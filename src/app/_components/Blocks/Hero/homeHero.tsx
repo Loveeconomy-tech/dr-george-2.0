@@ -8,11 +8,11 @@ import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 
 const HeroDesktop: NextPage = () => {
   const [lang , setLang] = useState('en')
-  const text = HomeHeroLangText[lang as keyof typeof HomeHeroLangText]
+  const text = HomeHeroLangText[lang as keyof typeof HomeHeroLangText] as unknown as { heroTitle: string; subTitle: string; heroTitle2: string; heroTitle3: string; heroTitle4: string; } 
   const defaultLang =  getLanguage()
-  const nextRef = useRef(null)
-  const prevRef = useRef(null)
-  let intervalRef = useRef(null);
+  const nextRef = useRef<HTMLDivElement>(null)
+  const prevRef = useRef<HTMLDivElement>(null)
+  let intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
       setLang(defaultLang)
@@ -56,32 +56,46 @@ const HeroDesktop: NextPage = () => {
       document?.querySelector('.slide')?.prepend(items[items.length - 1]);
     };
 
-    nextRef.current.addEventListener('click', handleNext);
-    prevRef.current.addEventListener('click', handlePrev);
+    if(nextRef.current){
+      nextRef.current.addEventListener('click', handleNext);
+    }
+    if(prevRef.current){
+      prevRef.current.addEventListener('click', handlePrev);
+    }
 
     const startAutoSlide = () => {
-      clearInterval(intervalRef.current); 
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current); 
+      } 
       console.log(intervalRef.current)
       intervalRef.current = setInterval(handleNext, 30000); // Adjust the interval time as needed (e.g., every 3 seconds)
       console.log(intervalRef.current)
     };
 
     const stopAutoSlide = () => {
-      clearInterval(intervalRef.current);
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current); 
+      } 
     };
 
 
     startAutoSlide();
 
-    document.querySelector('.slide').addEventListener('mouseenter', stopAutoSlide);
-    document.querySelector('.slide').addEventListener('mouseleave', startAutoSlide);
+    const slideElement = document.querySelector('.slide');
+
+  if (slideElement) {
+    slideElement.addEventListener('mouseenter', stopAutoSlide);
+    slideElement.addEventListener('mouseleave', startAutoSlide);
+  }
 
     return () => {
       nextRef?.current?.removeEventListener('click', () => handleNext);
       prevRef?.current?.removeEventListener('click', () => handlePrev);
       document.querySelector('.slide')?.removeEventListener('mouseenter',  () => stopAutoSlide);
       document.querySelector('.slide')?.removeEventListener('mouseleave',  () => startAutoSlide);
-      clearInterval(intervalRef.current);
+      if (intervalRef.current !== null) {
+        clearInterval(intervalRef.current); 
+      } 
     };
   },[])
 

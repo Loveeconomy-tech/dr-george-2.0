@@ -1,7 +1,7 @@
-import {FC, useRef, useEffect} from 'react'
+'use client'
+import {FC, useRef} from 'react'
 import { Text, Grid, GridItem, Box, Flex } from "@chakra-ui/react";
-import { motion, useAnimation } from 'framer-motion';
-import useHover from '@/hooks/useHover';
+import useHover from '../../../_hooks/useHover';
 
 const AnimatedGrid:FC<{count: string; description: string, border?: string}> = ({count, description, border}: {count: string; description: string, border?: string}) => {
     const ref = useRef(null);

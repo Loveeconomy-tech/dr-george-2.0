@@ -1,14 +1,13 @@
 import { FC, useEffect, useState } from 'react'
-import { Box, Flex, Grid, GridItem, Icon, Image, Text } from '@chakra-ui/react'
-import CustomButton from '../Atom/Button'
+import { Box, Flex, Grid, GridItem, Image, Text } from '@chakra-ui/react'
 import Link from 'next/link'
-import { getLanguage } from '@/helpers/misc'
-import HomeLang from '@/internationalization/home'
+import { getLanguage } from '../../_helpers/misc'
+import HomeLang from '../../_internationalization/home'
 
 
 const Ministry: FC = () => {
     const [lang,setLang] = useState('en')
-    const text = HomeLang[lang]
+    const text = HomeLang[lang as keyof typeof HomeLang]
     const defaultLang =  getLanguage()
 
     useEffect(() => {

@@ -1,3 +1,4 @@
+'use client'
 import type { NextPage } from 'next'
 import Layout from '../_components/BaseLayout/Index'
 import Listen from '../_components/Home/Listen'

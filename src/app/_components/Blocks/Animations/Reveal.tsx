@@ -10,7 +10,7 @@ interface IProp {
 
 const MotionBox = motion(Box)
 
-const setHidden = (from, len) => {
+const setHidden = (from: string | undefined, len: number) => {
     if(!from) from = 'bottom'
     let opacity = 0
     let x = 0, y= 0
@@ -29,7 +29,7 @@ const setHidden = (from, len) => {
     return {opacity, x, y}
 }
 
-const setVisible = (from) => {
+const setVisible = (from: string | undefined) => {
     if(!from) from = 'bottom'
     let opacity = 1
     if(from === 'top' || from === 'bottom') return {opacity, y: 0}

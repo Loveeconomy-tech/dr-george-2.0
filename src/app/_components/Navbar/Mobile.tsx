@@ -47,7 +47,7 @@ const MobileNavbar: FC<IProps> = ({ links, transparent }) => {
     } 
   }
 
-  const changeLanguage = (lang) => {
+  const changeLanguage = (lang: string) => {
     localStorage.setItem('site_language', lang)
     setLanguage(lang)
   }
@@ -66,14 +66,16 @@ const MobileNavbar: FC<IProps> = ({ links, transparent }) => {
 
     const logoBox = document.querySelector('.logo-box');
 
-    logoBox.addEventListener('mouseenter', () => {
-      animation.restart();
-      animation.pause()
-    });
+   if(logoBox){
+     logoBox.addEventListener('mouseenter', () => {
+        animation.restart();
+        animation.pause()
+      });
 
-    logoBox.addEventListener('mouseleave', () => {
-      animation.play();
-    });
+      logoBox.addEventListener('mouseleave', () => {
+        animation.play();
+      });
+   }
   })
 
 

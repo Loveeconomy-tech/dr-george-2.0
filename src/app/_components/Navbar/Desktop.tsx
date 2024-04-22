@@ -1,10 +1,11 @@
 import React, {Fragment, useEffect, useState} from 'react'
-import { Box, Flex, Icon, Image, Link, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react"
+import { Box, Flex, Image, Link, Menu, MenuButton, MenuItem, MenuList, Text } from "@chakra-ui/react"
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 import CustomButton from '../Atom/Button'
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { usePathname } from 'next/navigation'
 
 
 interface ILink {
@@ -17,7 +18,7 @@ interface ILink {
   children?: { name: string; path: string }[]
 }
 const NavbarLink: React.FC<{ item: ILink, transparent: boolean }> = ({ item, transparent }: { item: ILink, transparent: boolean }) => {
-  const router = useRouter()
+  const pathname = usePathname()
   
   return (
     <>
@@ -62,7 +63,7 @@ const NavbarLink: React.FC<{ item: ILink, transparent: boolean }> = ({ item, tra
           pos="relative"
           color={transparent? 'white': "base.blue"}
           {...{
-            fontWeight: router.pathname === item.path ? 700 : 500
+            fontWeight: pathname === item.path ? 700 : 500
           }}
         >
           {item.name}
@@ -86,7 +87,7 @@ const DesktopNavbar: React.FC<{ links: ILink[], topL:any[], transparent: boolean
     } 
   }
 
-  const changeLanguage = (lang) => {
+  const changeLanguage = (lang: string) => {
     localStorage.setItem('site_language', lang)
     setLanguage(lang)
   }
@@ -105,14 +106,16 @@ const DesktopNavbar: React.FC<{ links: ILink[], topL:any[], transparent: boolean
 
     const logoBox = document.querySelector('.logo-box');
 
-    logoBox.addEventListener('mouseenter', () => {
-      animation.restart();
-      animation.pause()
-    });
+    if(logoBox){
+      logoBox.addEventListener('mouseenter', () => {
+        animation.restart();
+        animation.pause()
+      });
 
-    logoBox.addEventListener('mouseleave', () => {
-      animation.play();
-    });
+      logoBox.addEventListener('mouseleave', () => {
+        animation.play();
+      });
+    }
   })
 
   return  (

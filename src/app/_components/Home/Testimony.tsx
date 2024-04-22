@@ -1,15 +1,13 @@
 import { FC, useEffect, useState } from 'react'
-import { Box, Flex, Grid, GridItem, Icon, Image, Text } from '@chakra-ui/react'
-import CustomButton from '../Atom/Button'
-import Link from 'next/link'
-import HomeLang from '@/internationalization/home'
-import { getLanguage } from '@/helpers/misc'
+import { Box, Flex, Icon, Text } from '@chakra-ui/react'
+import HomeLang from '../../_internationalization/home'
+import { getLanguage } from '../../_helpers/misc'
 import { TbQuote, TbQuotes } from 'react-icons/tb'
 
 
 const Testimony: FC = () => {
     const [lang,setLang] = useState('en')
-    const text = HomeLang[lang]
+    const text = HomeLang[lang as keyof typeof HomeLang]
     const defaultLang =  getLanguage()
 
     useEffect(() => {

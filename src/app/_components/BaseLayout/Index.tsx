@@ -1,10 +1,15 @@
-import { FC } from 'react'
-import { NextSeo } from 'next-seo'
+import { FC, useEffect, useState } from 'react'
 import { Box } from '@chakra-ui/layout'
 
 import { motion } from 'framer-motion'
-import { useRouter } from 'next/router'
 import * as _ from 'lodash'
+import { getLanguage } from '../../_helpers/misc'
+import NavText from '../../_internationalization/navs'
+import DesktopNavbar from '../Navbar/Desktop'
+import MobileNavbar from '../Navbar/Mobile'
+import useOnScroll from '../../_hooks/useOnScroll'
+import { usePathname } from 'next/navigation'
+import Footer from '../Footer'
 
 const MotionBox = motion(Box)
 const transition = { duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }
@@ -18,29 +23,49 @@ interface ILayout {
 
 const Layout: FC<ILayout> = ({
   children,
-  image_url = '',
-  link = '',
-  description = ''
 }) => {
-  // const router = useRouter()
+ const pathname = usePathname()
 
-  const main_site_url = 'https://www.gwarthur.io/'
-  const main_site_title = 'G. W. Arthur Ministries  '
+ const noNavPages: string[] = []
+  const noFooterPages = ['/404']
 
-  // let name: string | undefined = router.pathname
-  //   .replace(/\//g, '')
-  //   .replace('-', ' ')
-  //   .split(' ')
-  //   .map(e => _.upperFirst(e))
-  //   .join(' ') 
+  const showNav = !noNavPages.includes(pathname)
+  const showFooter = !noFooterPages.includes(pathname)
+  const scrollPosition = useOnScroll();
 
-  // if (router.pathname === '/') {
-  //   name = 'Home'
-  // }
+  const [lang,setLang] = useState('en')
+  const text = NavText[lang as keyof typeof NavText]
+  const defaultLang =  getLanguage()
+
+  useEffect(() => {
+    setLang(defaultLang)
+  },[defaultLang]) 
+
+
+  const links = [
+    { name: `${text.navHome}`, path: '/' },
+    { name: `${text.navBiography}`, path: '/biography' },
+    { name: `${text.navMinistry}`, path: '/ministry' },
+    { name: `${text.navGallery}`, path: '/gallery' },
+    // { name: `${text.navPodcast}`, path: '/' },
+    { name: `${text.navContact}`, path: '/contact' },
+    { name: `${text.navPartner}`, path: '/partner', type: 'button' }
+  ]
+
+  const topLeft = [
+    { title: 'info@gwarthurministries.org'},
+    { title: '+233 245 659 875' }
+  ]
 
 
   return (
     <Box>
+      {showNav && (
+          <>
+            <DesktopNavbar links={links} topL={topLeft} transparent={scrollPosition < 167 ? true: false} />
+            <MobileNavbar links={links} transparent={scrollPosition < 167 ? true: false} />
+          </>
+        )}
       <MotionBox
         as="main"
         role="main"
@@ -53,6 +78,7 @@ const Layout: FC<ILayout> = ({
       >
         {children}
       </MotionBox>
+       {showFooter && <Footer />}
     </Box>
   )
 }

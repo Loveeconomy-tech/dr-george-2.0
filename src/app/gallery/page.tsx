@@ -1,3 +1,4 @@
+'use client'
 import type { NextPage } from 'next'
 import Layout from '../_components/BaseLayout/Index'
 import PageHero from '../_components/Blocks/Hero/pageHero'

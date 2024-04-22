@@ -1,42 +1,20 @@
 import { FC, useEffect, useState } from 'react'
 import { Box, Flex, Grid, GridItem, Icon, Image, Text } from '@chakra-ui/react'
-import {BiArrowBack} from 'react-icons/bi'
-import { useRouter } from 'next/router'
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 import Link from 'next/link'
-import { createClient } from '@/helpers/prismicClient'
 import Masonry from "react-responsive-masonry"
-import { getLanguage } from '@/helpers/misc'
-import footerText from '@/internationalization/footer'
+import { getLanguage } from '../../_helpers/misc'
+import footerText from '../../_internationalization/footer'
 
 const Footer: FC = () => {
-  const client = createClient({})
-  const [data, setData] = useState([])
-
   const [lang,setLang] = useState('en')
-  const text = footerText[lang]
+  const text = footerText[lang as keyof typeof footerText]
   const defaultLang =  getLanguage()
 
   useEffect(() => {
     setLang(defaultLang)
   },[defaultLang]) 
-
-    useEffect(() => {
-      // Your asynchronous logic here
-      const fetchData = async () => {
-      const componentData = await client?.getAllByType('site_gallery', {
-          fetchOptions: {
-          cache: 'no-store',
-          next: { tags: ['prismic', 'home_hero'] },
-          }
-      })
-
-      setData(componentData)
-      };
-
-      fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+;
 
   const images = [
     '/images/gallery/_BXA5465.jpg',
