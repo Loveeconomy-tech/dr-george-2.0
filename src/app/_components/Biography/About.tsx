@@ -1,20 +1,22 @@
+'use client'
+
 import { FC, useEffect, useState } from 'react'
 import { Box, Flex, Grid, GridItem, Icon, Image, Skeleton, Text } from '@chakra-ui/react'
 import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
 import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2'
 import Link from 'next/link'
-import { createClient } from '@/helpers/prismicClient'
-import { getLanguage } from '@/helpers/misc'
-import AboutText from '@/internationalization/about'
+import { createClient } from '../../_helpers/prismicClient'
+import { getLanguage } from '../../_helpers/misc'
+import AboutText from '../../_internationalization/about'
 
 const About: FC = () => {
     const client = createClient({})
-    const [data, setData] = useState([])
+    const [data, setData] = useState<({data: {image: {url:string}},id: string} | undefined)[]>([])
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
     const currentIndex = 4
 
     const [lang,setLang] = useState('en')
-    const text = AboutText[lang]
+    const text = AboutText[lang as keyof typeof AboutText]
     const defaultLang =  getLanguage()
 
     useEffect(() => {
@@ -32,7 +34,7 @@ const About: FC = () => {
             }
         })
 
-        setData(componentData)
+        setData(componentData as unknown as ({data: {image: {url:string}},id: string} | undefined)[] )
         };
 
         fetchData();
@@ -111,8 +113,8 @@ const About: FC = () => {
                     
                     <Box h={24} w={(24*5)} bg="gray.100" mt={4}>
                         <Box display={"inline-block"} w={"2000px"} gap={6} h={"100%"}>
-                            {data.map(item => (
-                                <Box mr={5} display={"inline-block"} key={item.id} w={24} h={"100%"} bgImage={item.data.image.url} bgSize={"cover"}></Box>
+                            {data.map((item) => (
+                                <Box mr={5} display={"inline-block"} key={item?.id as string} w={24} h={"100%"} bgImage={item?.data.image.url} bgSize={"cover"}></Box>
                             ))}
                         </Box>
                     </Box>

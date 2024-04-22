@@ -1,13 +1,14 @@
+'use client'
 import { FC, useEffect, useState } from 'react'
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react'
-import { getLanguage } from '@/helpers/misc'
-import contactText from '@/internationalization/contact'
+import { getLanguage } from '../../_helpers/misc'
+import contactText from '../../_internationalization/contact'
 import CustomButton from '../Atom/Button'
 
 
 const Appointment: FC = () => {
     const [lang,setLang] = useState('en')
-  const text = contactText[lang]
+  const text = contactText[lang as keyof typeof contactText]
   const defaultLang =  getLanguage()
 
   useEffect(() => {
