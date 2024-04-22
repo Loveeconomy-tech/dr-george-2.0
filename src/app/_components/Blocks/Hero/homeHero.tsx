@@ -37,12 +37,12 @@ const HeroDesktop: NextPage = () => {
       cover: '/images/covers/cover-3.jpg',
       key: "isActive3"
     },
-    {
-    title: text.heroTitle4,
-    subText: '',
-    cover: '/images/covers/cover-4.jpg',
-    key: "isActive4"
-  }
+    // {
+    //   title: text.heroTitle4,
+    //   subText: '',
+    //   cover: '/images/covers/cover-4.jpg',
+    //   key: "isActive4"
+    // }
   ] 
 
   useEffect(() => {
@@ -60,7 +60,10 @@ const HeroDesktop: NextPage = () => {
     prevRef.current.addEventListener('click', handlePrev);
 
     const startAutoSlide = () => {
-      intervalRef.current = setInterval(handleNext, 15000); // Adjust the interval time as needed (e.g., every 3 seconds)
+      clearInterval(intervalRef.current); 
+      console.log(intervalRef.current)
+      intervalRef.current = setInterval(handleNext, 30000); // Adjust the interval time as needed (e.g., every 3 seconds)
+      console.log(intervalRef.current)
     };
 
     const stopAutoSlide = () => {
@@ -74,10 +77,11 @@ const HeroDesktop: NextPage = () => {
     document.querySelector('.slide').addEventListener('mouseleave', startAutoSlide);
 
     return () => {
-      nextRef?.current?.removeEventListener('click', () => null);
-      prevRef?.current?.removeEventListener('click', () => null);
-      document.querySelector('.slide')?.removeEventListener('mouseenter',  () => null);
-      document.querySelector('.slide')?.removeEventListener('mouseleave',  () => null);
+      nextRef?.current?.removeEventListener('click', () => handleNext);
+      prevRef?.current?.removeEventListener('click', () => handlePrev);
+      document.querySelector('.slide')?.removeEventListener('mouseenter',  () => stopAutoSlide);
+      document.querySelector('.slide')?.removeEventListener('mouseleave',  () => startAutoSlide);
+      clearInterval(intervalRef.current);
     };
   },[])
 

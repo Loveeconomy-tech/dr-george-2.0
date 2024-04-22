@@ -11,7 +11,7 @@ import Listen from './_components/Home/Listen'
 import { useEffect } from 'react'
 import { getCaptivateToken } from './_service/captivate'
 import Testimony from './_components/Home/Testimony'
-
+import './global.css'
 
 const Home: NextPage = () => {
   useEffect(() => {
