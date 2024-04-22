@@ -8,7 +8,6 @@ import CustomButton from '../Atom/Button'
 
 const Appointment: FC = () => {
     const [lang,setLang] = useState('en')
-  const text = contactText[lang as keyof typeof contactText]
   const defaultLang =  getLanguage()
 
   useEffect(() => {

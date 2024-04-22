@@ -1,11 +1,8 @@
 import { FC, useEffect, useState } from 'react'
-import { Box, Flex, Grid, GridItem, Icon, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, Skeleton, Text, useDisclosure } from '@chakra-ui/react'
-import { FaFacebook, FaInstagram, FaYoutube } from 'react-icons/fa'
-import { HiArrowLongLeft, HiArrowLongRight } from 'react-icons/hi2'
-import Link from 'next/link'
-import { createClient } from '@/helpers/prismicClient'
-import { getLanguage } from '@/helpers/misc'
-import GalleryText from '@/internationalization/gallery'
+import { Box, Grid, GridItem, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalOverlay, useDisclosure } from '@chakra-ui/react'
+import { createClient } from '../../_helpers/prismicClient'
+import { getLanguage } from '../../_helpers/misc'
+import GalleryText from '../../_internationalization/gallery'
 
 
 const ImageModal: FC<{isOpen: boolean, onClose: () => void, image: string}> = ({isOpen, onClose, image}) => {
@@ -29,58 +26,9 @@ const ImageModal: FC<{isOpen: boolean, onClose: () => void, image: string}> = ({
 }
 
 const GalleryImages: FC = () => {
-    const client = createClient({})
-    const [data, setData] = useState([])
-    const [isAnimating, setIsAnimating] = useState<boolean>(false);
-    const currentIndex = 4;
-
     const { isOpen, onOpen, onClose } = useDisclosure()
-
-    const [lang,setLang] = useState('en')
-    const text = GalleryText[lang]
-    const defaultLang =  getLanguage()
     const [view, setView] = useState('');
 
-    useEffect(() => {
-        setLang(defaultLang)
-    },[defaultLang])
-
-
-    useEffect(() => {
-        // Your asynchronous logic here
-        const fetchData = async () => {
-        const componentData = await client.getAllByType('site_gallery', {
-            fetchOptions: {
-            cache: 'no-store',
-            next: { tags: ['prismic', 'home_hero'] },
-            }
-        })
-
-        setData(componentData)
-        };
-
-        fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
-  const handlePrevious = () => {
-    setIsAnimating(true);
-    const imageArr = [...data]
-    imageArr.push(imageArr.shift());
-    setData(imageArr)
-  }
-
-  const handleNext = () => {
-    setIsAnimating(true);
-    const imageArr = [...data]
-    let lastElement = imageArr.pop(); // Remove the last element
-    imageArr.unshift(lastElement); 
-    setData(imageArr)
-  }
-
-  const handleLoaded = () => {
-    setIsAnimating(false)
-  }
 
   const images = [
     '/images/gallery/_BXA5465.jpg',
