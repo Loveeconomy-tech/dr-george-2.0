@@ -21,6 +21,7 @@ const Listen: FC = () => {
         py={20}
         px={{ base: 4, '2xl': 36 }}
         pos={"relative"}
+        overflow={"hidden"}
     >
       <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)'}}>
         <GridItem pr={{base: 0, md: 36}} py={4}>
