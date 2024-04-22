@@ -24,10 +24,10 @@ const Home: NextPage = () => {
       <Newsletter />
       <Latest />
       <AudioMessages />
-      {/* <Social /> */}
-      {/* <Testimony /> */}
-      {/* <AskDrGeorge /> */}
-      {/* <Listen /> */}
+      <Social />
+      <Testimony />
+      <AskDrGeorge />
+      <Listen />
     </Layout>
   )
 }
