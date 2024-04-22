@@ -133,9 +133,7 @@ const Ministry: FC = () => {
                         {!isMobile &&<Flex onClick={() => setIsPlaying(!isPlaying)} align={"center"} justify={"center"} w={6} h={6}>
                             {!isReady ? <Spinner /> : <Icon as={isPlaying ? TbPlayerPause :TbPlayerPlayFilled }  color={"base.blue"} boxSize={6} />}
                         </Flex>}
-                    </Flex> : <Flex p={3} h={12} w="100" justify={"space-between"}>
-                        <Text textAlign={{base: "center", md: "left"}} color={"#ffffff"} fontFamily={"Montserrat"} fontWeight={500} fontSize={{base: 12, md: 15}}>{item.title}</Text>
-                    </Flex>}
+                    </Flex> : null}
 
                     {
                         ((active as {id: string})?.id) === item.id  && isMobile ? (

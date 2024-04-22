@@ -23,11 +23,11 @@ const Home: NextPage = () => {
       <HeroDesktop />
       <Newsletter />
       <Latest />
-      {/* <AudioMessages />
-      <Social />
-      <Testimony />
-      <AskDrGeorge />
-      <Listen /> */}
+      <AudioMessages />
+      {/* <Social /> */}
+      {/* <Testimony /> */}
+      {/* <AskDrGeorge /> */}
+      {/* <Listen /> */}
     </Layout>
   )
 }
