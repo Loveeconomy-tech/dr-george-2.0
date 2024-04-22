@@ -7,7 +7,6 @@ import { TbQuote, TbQuotes } from 'react-icons/tb'
 
 const Testimony: FC = () => {
     const [lang,setLang] = useState('en')
-    const text = HomeLang[lang as keyof typeof HomeLang]
     const defaultLang =  getLanguage()
 
     useEffect(() => {
