@@ -71,10 +71,10 @@ const GalleryImages: FC = () => {
     <Box py={{base: 12, md: 20}} px={{ base: 4, '2xl': 36 }} pos="relative">
       
       <ImageModal isOpen={isOpen} onClose={onClose} image={view} />
-      <Grid templateColumns={{base: 'repeat(2, 1fr)', xl: 'repeat(3, 1fr)'}} gap={{base: 4, xl: 6}}>
+      <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)', xl: 'repeat(3, 1fr)'}} gap={{base: 4, xl: 6}}>
                 {images.map(item => (
                   <GridItem key={item} onClick={() => {setView(item); onOpen()}} cursor={'pointer'}>
-                    <Box mr={5} display={"inline-block"} w={"100%"} h={{sm: '300px', base: '400px', xl: '500px'}} bgImage={item} bgSize={"cover"}></Box>
+                    <Box mr={5} display={"inline-block"} w={"100%"} h={{base: '300px', sm: '400px', xl: '500px'}} bgImage={item} bgSize={"cover"}></Box>
                   </GridItem>
                 ))}
         <GridItem>
