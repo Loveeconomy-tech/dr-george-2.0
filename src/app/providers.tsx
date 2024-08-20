@@ -6,6 +6,7 @@ import { theme } from './_theme/theme'
 import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 export function Providers({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
   const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         </AnimatePresence>
       </ChakraProvider>
       <SpeedInsights />
+      <Analytics />
     </QueryClientProvider>
   )
 }
