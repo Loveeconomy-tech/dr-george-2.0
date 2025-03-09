@@ -1,9 +1,9 @@
-import React from 'react'
-import { createIcon } from '@chakra-ui/icon'
+import React from "react";
+import { createIcon } from "@chakra-ui/react";
 
 export const FolderIcon = createIcon({
-  displayName: 'FolderIcon',
-  viewBox: '0 0 60 54',
+  displayName: "FolderIcon",
+  viewBox: "0 0 60 54",
   path: (
     <>
       <rect width="50" height="42" rx="4" fill="#EC6F2E" />
@@ -16,12 +16,12 @@ export const FolderIcon = createIcon({
         fill="white"
       />
     </>
-  )
-})
+  ),
+});
 
 export const Arrow = createIcon({
-  displayName: 'Arrow',
-  viewBox: '0 0 18 12',
+  displayName: "Arrow",
+  viewBox: "0 0 18 12",
   path: (
     <>
       <path
@@ -34,12 +34,12 @@ export const Arrow = createIcon({
         fill="black"
       />
     </>
-  )
-})
+  ),
+});
 
 export const ArrowCircle = createIcon({
-  displayName: 'ArrowCircle',
-  viewBox: '0 0 64 64',
+  displayName: "ArrowCircle",
+  viewBox: "0 0 64 64",
   path: (
     <>
       <rect width="64" height="64" rx="32" fill="white" />
@@ -53,12 +53,12 @@ export const ArrowCircle = createIcon({
         fill="currentColor"
       />
     </>
-  )
-})
+  ),
+});
 
 export const GReview = createIcon({
-  displayName: 'GReview',
-  viewBox: '0 0 72 19',
+  displayName: "GReview",
+  viewBox: "0 0 72 19",
   path: (
     <>
       <path
@@ -83,12 +83,12 @@ export const GReview = createIcon({
         />
       </defs>
     </>
-  )
-})
+  ),
+});
 
 export const Reload = createIcon({
-  displayName: 'Reload',
-  viewBox: '0 0 34 34',
+  displayName: "Reload",
+  viewBox: "0 0 34 34",
   path: (
     <>
       <path
@@ -100,12 +100,12 @@ export const Reload = createIcon({
         fill="#491757"
       />
     </>
-  )
-})
+  ),
+});
 
 export const User = createIcon({
-  displayName: 'User',
-  viewBox: '0 0 34 34',
+  displayName: "User",
+  viewBox: "0 0 34 34",
   path: (
     <>
       <path
@@ -113,12 +113,12 @@ export const User = createIcon({
         fill="black"
       />
     </>
-  )
-})
+  ),
+});
 
 export const Speed = createIcon({
-  displayName: 'Speed',
-  viewBox: '0 0 40 40',
+  displayName: "Speed",
+  viewBox: "0 0 40 40",
   path: (
     <>
       <path
@@ -126,12 +126,12 @@ export const Speed = createIcon({
         fill="black"
       />
     </>
-  )
-})
+  ),
+});
 
 export const Wallet = createIcon({
-  displayName: 'Wallet',
-  viewBox: '0 0 34 34',
+  displayName: "Wallet",
+  viewBox: "0 0 34 34",
   path: (
     <>
       <path
@@ -139,12 +139,12 @@ export const Wallet = createIcon({
         fill="black"
       />
     </>
-  )
-})
+  ),
+});
 
 export const Home = createIcon({
-  displayName: 'Home',
-  viewBox: '0 0 37 38',
+  displayName: "Home",
+  viewBox: "0 0 37 38",
   path: (
     <>
       <path
@@ -152,12 +152,12 @@ export const Home = createIcon({
         fill="black"
       />
     </>
-  )
-})
+  ),
+});
 
 export const Envelope = createIcon({
-  displayName: 'Envelope',
-  viewBox: '0 0  46 41',
+  displayName: "Envelope",
+  viewBox: "0 0  46 41",
   path: (
     <>
       <path
@@ -170,5 +170,5 @@ export const Envelope = createIcon({
         fill="black"
       />
     </>
-  )
-})
+  ),
+});
