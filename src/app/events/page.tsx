@@ -8,6 +8,7 @@ import eventsText from "../_internationalization/events";
 import CurrentEvents from "../_components/Events/currents-events";
 import UpcomingEvents from "../_components/Events/upcoming-events";
 import PastEvents from "../_components/Events/past-events";
+import NoEvents from "../_components/Events/no-events";
 
 const Events: NextPage = () => {
   const [lang, setLang] = useState("en");
@@ -21,9 +22,10 @@ const Events: NextPage = () => {
   return (
     <Layout>
       <PageHero title={text.eventsHeroText} />
-      <CurrentEvents />
+      <NoEvents />
+      {/* <CurrentEvents />
       <UpcomingEvents />
-      <PastEvents />
+      <PastEvents /> */}
     </Layout>
   );
 };
