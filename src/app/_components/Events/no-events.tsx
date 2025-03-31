@@ -16,9 +16,10 @@ const NoEvents = () => {
         </Text>
         <Text fontFamily={"Montserrat"} mt={4}>
           Your season of renewal is here, and we know God is about to move in a
-          powerful way. We’ll be spending time with Rev. G.W Arthur as he
-          teaches and expounds on God’s word for you. These are moments set
-          apart for divine transformation, and we don’t want you to miss them.
+          powerful way. We&apos;ll be spending time with Rev. G.W Arthur as he
+          teaches and expounds on God&apos;s word for you. These are moments set
+          apart for divine transformation, and we don&apos;t want you to miss
+          them.
         </Text>
 
         <Box
