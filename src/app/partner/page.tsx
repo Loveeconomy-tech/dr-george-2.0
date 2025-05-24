@@ -36,6 +36,18 @@ const Home: NextPage = () => {
                     </Box>
                 </GridItem>
                 <GridItem py={{base: 8, md: 20}} px={{base: 8, md: 20}}>
+                    <Text fontWeight={600} fontSize={{base: 20, md: 24}} mb={4}>Bank Account</Text>
+
+                    <Flex direction={'column'} gap={{base: 2, md: 6}} maxW={'600px'} mx={"auto"}>
+                        <Text fontWeight={400} fontSize={{base: 16, md: 18}} mb={4}>Account Name: G.W. Arthur Ministries</Text>
+                        <Text fontWeight={400} fontSize={{base: 16, md: 18}} mb={4}>Account Number: 1441004905984</Text>
+                        <Text fontWeight={400} fontSize={{base: 16, md: 18}} mb={4}>Bank Branch: Haatso</Text>
+                        <Text fontWeight={400} fontSize={{base: 16, md: 18}} mb={4}>Bank Name: Ecobank</Text>
+                    </Flex>
+                </GridItem>
+            </Grid>
+            <Grid templateColumns={{base: 'repeat(1, 1fr)', md: 'repeat(1, 1fr)'}} gap={5} mb={12}>
+            <GridItem py={{base: 8, md: 20}} px={{base: 8, md: 20}}>
                     <Text fontWeight={600} fontSize={{base: 20, md: 24}} mb={4}>{text.partnerHeader}</Text>
 
                     <Flex direction={'column'} gap={{base: 2, md: 6}} maxW={'600px'} mx={"auto"}>
